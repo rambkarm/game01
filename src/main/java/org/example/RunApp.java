@@ -3,6 +3,8 @@ package org.example;
 public class RunApp {
     private static final String MENU = """
             1 -- Enter name
+            2 -- Enter age
+            3 -- Enter salary
             9 -- Exit game""";
     private ConsoleUserDialog ui;
 
