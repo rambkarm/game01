@@ -54,6 +54,8 @@ public class RunApp {
         String email = ui.enterString("enter email: ");
         String password = ui.enterString("enter password: ");
         ui.printMessage("---profile was updated---");
+        Profile profile = new Profile(name, age, email, password);
+        ui.printMessage(profile.toString());
     }
 
     private void createCharacter() {
