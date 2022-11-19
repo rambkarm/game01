@@ -23,10 +23,21 @@ public class ConsoleUserDialog {
     }
 
     public Double enterDouble(String message) {
-        System.out.println(message);
-        Scanner scanner = new Scanner(System.in);
-        String value = scanner.nextLine();
-        Double result = Double.parseDouble(value);
+        boolean isError;
+        double result = 0.0;
+        do {
+            isError = false;
+            System.out.println(message);
+            Scanner scanner = new Scanner(System.in);
+            String value = scanner.nextLine();
+            try {
+                result = Double.parseDouble(value);
+            } catch (NumberFormatException ex) {
+                isError = true;
+                System.out.println("Error! Please enter double value.");
+            }
+        } while (isError);
+
         return result;
     }
 
