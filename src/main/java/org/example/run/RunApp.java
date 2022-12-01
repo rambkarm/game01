@@ -1,4 +1,8 @@
-package org.example;
+package org.example.run;
+
+import org.example.model.Character;
+import org.example.ui.ConsoleUserDialog;
+import org.example.model.Profile;
 
 public class RunApp {
     private static final String MENU = """
@@ -62,9 +66,11 @@ public class RunApp {
         ui.printMessage("---character menu---");
         String name = ui.enterString("enter name: ");
         String gender = ui.enterString("enter gender:");
-        String eyes_color = ui.enterString("enter eyes color: ");
-        String hair_color = ui.enterString("enter hair color: ");
+        String eyesColor = ui.enterString("enter eyes color: ");
+        String hairColor = ui.enterString("enter hair color: ");
         double hp = ui.enterDouble("enter hp level: ");
         ui.printMessage("---character was updated---");
+        Character character = new Character(name, gender, eyesColor, hairColor, hp);
+        ui.printMessage(character.toString());
     }
 }
