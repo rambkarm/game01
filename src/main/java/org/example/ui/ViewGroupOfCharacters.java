@@ -22,7 +22,7 @@ public class ViewGroupOfCharacters extends JScrollPane {
         setPreferredSize(new Dimension(width, height));
         setBorder(BorderFactory.createTitledBorder("All characters:"));
 
-        String[] tableHeader = {"Name", "Mass", "Radius", "Colour", "Amount of satellites"};
+        String[] tableHeader = {"Name", "Gender", "Eyes color", "Hair color", "HP"};
         tableModel = new DefaultTableModel(tableHeader, 0);
         table = new JTable(tableModel) {
 

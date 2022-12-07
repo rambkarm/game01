@@ -17,10 +17,10 @@ public class CharacterWindowDialog extends JDialog implements ActionListener {
 
 
     JLabel nameLabel = new JLabel("Name: ");
-    JLabel colourLabel = new JLabel("Color: ");
-    JLabel massLabel = new JLabel("Mass: ");
-    JLabel radiusLabel = new JLabel("Radius: ");
-    JLabel satellitesLabel = new JLabel("Number of satellites: ");
+    JLabel genderLabel = new JLabel("Gender: ");
+    JLabel eyesColorLabel = new JLabel("Eyes color: ");
+    JLabel hairColorLabel = new JLabel("Hair color: ");
+    JLabel hpLabel = new JLabel("HP: ");
 
     JTextField nameField = new JTextField(10);
     JComboBox<EyeColor> eyeColorField = new JComboBox<EyeColor>(EyeColor.values());
@@ -58,24 +58,24 @@ public class CharacterWindowDialog extends JDialog implements ActionListener {
         JPanel panel = new JPanel();
 
         nameLabel.setForeground(Color.white);
-        colourLabel.setForeground(Color.white);
-        massLabel.setForeground(Color.white);
-        radiusLabel.setForeground(Color.white);
-        satellitesLabel.setForeground(Color.white);
+        genderLabel.setForeground(Color.white);
+        eyesColorLabel.setForeground(Color.white);
+        hairColorLabel.setForeground(Color.white);
+        hpLabel.setForeground(Color.white);
 
         panel.add(nameLabel);
         panel.add(nameField);
 
-        panel.add(colourLabel);
+        panel.add(genderLabel);
         panel.add(eyeColorField);
 
-        panel.add(massLabel);
+        panel.add(eyesColorLabel);
         panel.add(hairColorField);
 
-        panel.add(radiusLabel);
+        panel.add(hairColorLabel);
         panel.add(hpField);
 
-        panel.add(satellitesLabel);
+        panel.add(hpLabel);
         panel.add(genderField);
 
         panel.add(OKButton);

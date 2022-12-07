@@ -53,8 +53,8 @@ public class GroupWindowApp extends JDialog implements ActionListener {
     JButton loadFromDocumentButton = new JButton("Read data from document");
     JButton saveToDocumentButton = new JButton("Write data to the document");
     JButton infoButton = new JButton("About author");
-    JButton buttonSortMass = new JButton("Sort by the mass");
-    JButton buttonSortColour = new JButton("Sort by the colour");
+    JButton buttonSortHP = new JButton("Sort by the HP");
+    JButton buttonSortEyesColor = new JButton("Sort by the eyes color");
 
     ViewGroupOfCharacters viewList;
 
@@ -85,8 +85,8 @@ public class GroupWindowApp extends JDialog implements ActionListener {
         saveToDocumentButton.addActionListener(this);
         infoButton.addActionListener(this);
 
-        buttonSortMass.addActionListener(this);
-        buttonSortColour.addActionListener(this);
+        buttonSortHP.addActionListener(this);
+        buttonSortEyesColor.addActionListener(this);
 
         JPanel panel = new JPanel();
 
@@ -99,8 +99,8 @@ public class GroupWindowApp extends JDialog implements ActionListener {
         panel.add(saveToDocumentButton);
         panel.add(infoButton);
 
-        panel.add(buttonSortMass);
-        panel.add(buttonSortColour);
+        panel.add(buttonSortHP);
+        panel.add(buttonSortEyesColor);
 
         setContentPane(panel);
 
@@ -155,7 +155,7 @@ public class GroupWindowApp extends JDialog implements ActionListener {
                 }
             }
 
-            if (source == buttonSortMass) {
+            if (source == buttonSortHP) {
                 currentGroupOfCharacters.sort(new Comparator<Character>() {
                     @Override
                     public int compare(Character o1, Character o2) {
@@ -164,7 +164,7 @@ public class GroupWindowApp extends JDialog implements ActionListener {
                 });
             }
 
-            if (source == buttonSortColour) {
+            if (source == buttonSortEyesColor) {
                 currentGroupOfCharacters.sort(new Comparator<Character>() {
 
                     @Override
