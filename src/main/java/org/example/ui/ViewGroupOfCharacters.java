@@ -8,7 +8,7 @@ import java.awt.*;
 import java.io.Serial;
 import java.util.Vector;
 
-public class ViewGroupOfPlanets extends JScrollPane {
+public class ViewGroupOfCharacters extends JScrollPane {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -17,10 +17,10 @@ public class ViewGroupOfPlanets extends JScrollPane {
     private JTable table;
     private DefaultTableModel tableModel;
 
-    public ViewGroupOfPlanets(Vector<Character> group, int width, int height) {
+    public ViewGroupOfCharacters(Vector<Character> group, int width, int height) {
         this.group = group;
         setPreferredSize(new Dimension(width, height));
-        setBorder(BorderFactory.createTitledBorder("All planets:"));
+        setBorder(BorderFactory.createTitledBorder("All characters:"));
 
         String[] tableHeader = {"Name", "Mass", "Radius", "Colour", "Amount of satellites"};
         tableModel = new DefaultTableModel(tableHeader, 0);
@@ -51,7 +51,7 @@ public class ViewGroupOfPlanets extends JScrollPane {
     public int getSelectedIndex() {
         int index = table.getSelectedRow();
         if (index < 0) {
-            JOptionPane.showMessageDialog(this, "No planet was chosen", "Unexpected error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No character was chosen", "Unexpected error", JOptionPane.ERROR_MESSAGE);
         }
         return index;
     }

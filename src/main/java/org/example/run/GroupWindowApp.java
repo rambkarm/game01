@@ -1,9 +1,8 @@
 package org.example.run;
 
 import org.example.model.Character;
-import org.example.model.CharacterException;
-import org.example.ui.PlanetWindowDialog;
-import org.example.ui.ViewGroupOfPlanets;
+import org.example.ui.CharacterWindowDialog;
+import org.example.ui.ViewGroupOfCharacters;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,10 +14,12 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Vector;
 
+import static org.example.run.GameWindowApp.AUTHOR;
+
 public class GroupWindowApp extends JDialog implements ActionListener {
     @Serial
     private static final long serialVersionUID = 1L;
-    public static final String AUTHOR = "Nazwa: Planety. Autor: Valeriia Tykhoniuk (266319). Data utworzenia: 15.11.2022";
+
 
     public static void main(String[] args) {
         Vector<Character> group = new Vector<Character>();
@@ -45,17 +46,17 @@ public class GroupWindowApp extends JDialog implements ActionListener {
     }
 
 
-    private final Vector<Character> currentGroupOfPlanets;
-    JButton newPlanetButton = new JButton("New planet");
-    JButton deletePlanetButton = new JButton("Delete planet");
-    JButton editPlanetButton = new JButton("Change planet");
+    private final Vector<Character> currentGroupOfCharacters;
+    JButton newCharacterButton = new JButton("New character");
+    JButton deleteCharacterButton = new JButton("Delete character");
+    JButton editCharacterButton = new JButton("Change character");
     JButton loadFromDocumentButton = new JButton("Read data from document");
     JButton saveToDocumentButton = new JButton("Write data to the document");
     JButton infoButton = new JButton("About author");
     JButton buttonSortMass = new JButton("Sort by the mass");
     JButton buttonSortColour = new JButton("Sort by the colour");
 
-    ViewGroupOfPlanets viewList;
+    ViewGroupOfCharacters viewList;
 
     public GroupWindowApp(Window parent, Vector<Character> group) {
 
@@ -72,14 +73,14 @@ public class GroupWindowApp extends JDialog implements ActionListener {
             setLocation(location);
         } else setLocationRelativeTo(null);
 
-        currentGroupOfPlanets = group;
+        currentGroupOfCharacters = group;
 
-        viewList = new ViewGroupOfPlanets(currentGroupOfPlanets, 400, 250);
+        viewList = new ViewGroupOfCharacters(currentGroupOfCharacters, 400, 250);
         viewList.refreshView();
 
-        newPlanetButton.addActionListener(this);
-        deletePlanetButton.addActionListener(this);
-        editPlanetButton.addActionListener(this);
+        newCharacterButton.addActionListener(this);
+        deleteCharacterButton.addActionListener(this);
+        editCharacterButton.addActionListener(this);
         loadFromDocumentButton.addActionListener(this);
         saveToDocumentButton.addActionListener(this);
         infoButton.addActionListener(this);
@@ -91,9 +92,9 @@ public class GroupWindowApp extends JDialog implements ActionListener {
 
         panel.add(viewList);
 
-        panel.add(newPlanetButton);
-        panel.add(deletePlanetButton);
-        panel.add(editPlanetButton);
+        panel.add(newCharacterButton);
+        panel.add(deleteCharacterButton);
+        panel.add(editCharacterButton);
         panel.add(loadFromDocumentButton);
         panel.add(saveToDocumentButton);
         panel.add(infoButton);
@@ -114,19 +115,19 @@ public class GroupWindowApp extends JDialog implements ActionListener {
         Object source = e.getSource();
 
 //        try {
-            if (source == newPlanetButton) {
-                Character newPlanet = PlanetWindowDialog.createPlanet(this);
-                if (newPlanet != null) currentGroupOfPlanets.add(newPlanet);
+            if (source == newCharacterButton) {
+                Character newCharacter = CharacterWindowDialog.createCharacter(this);
+                if (newCharacter != null) currentGroupOfCharacters.add(newCharacter);
             }
 
-            if (source == editPlanetButton) {
+            if (source == editCharacterButton) {
                 Iterator<Character> iterator = getIterator();
                 if (iterator != null) {
-                    PlanetWindowDialog.changePlanet(this, iterator.next());
+                    CharacterWindowDialog.changeCharacter(this, iterator.next());
                 }
             }
 
-            if (source == deletePlanetButton) {
+            if (source == deleteCharacterButton) {
                 Iterator<Character> iterator = getIterator();
                 if (iterator != null) {
                     iterator.next();
@@ -134,52 +135,48 @@ public class GroupWindowApp extends JDialog implements ActionListener {
                 }
             }
 
-//            if (source == loadFromDocumentButton) {
-//                JFileChooser fc = new JFileChooser();
-//                int i = fc.showOpenDialog(this);
-//                if (i == JFileChooser.APPROVE_OPTION) {
-//                    File f = fc.getSelectedFile();
-//                    Character planet = Character.readFromFile(f);
-//                    currentGroupOfPlanets.add(planet);
-//                }
-//            }
-//
-//            if (source == saveToDocumentButton) {
-//                Iterator<Character> iterator = getIterator();
-//                if (iterator != null) {
-//                    Character planet = iterator.next();
-//                    String fileName = JOptionPane.showInputDialog("Write the name of document");
-//                    if (fileName == null || fileName.equals("")) return;  // Cancel lub pusta nazwa pliku.
-//                    Character.writeToTheDocument(fileName, planet);
-//                }
-//            }
+            if (source == loadFromDocumentButton) {
+                JFileChooser fc = new JFileChooser();
+                int i = fc.showOpenDialog(this);
+                if (i == JFileChooser.APPROVE_OPTION) {
+                    File f = fc.getSelectedFile();
+                    Character character = null; // Character.readFromFile(f);  todo
+                    currentGroupOfCharacters.add(character);
+                }
+            }
 
-//            if (source == buttonSortMass) {
-//                currentGroupOfPlanets.sort(new Comparator<Character>() {
-//                    @Override
-//                    public int compare(Character o1, Character o2) {
-//                        if (o1.getMass() < o2.getMass())
-//                            return -1;
-//                        if (o1.getMass() > o2.getMass())
-//                            return 1;
-//                        return 0;
-//                    }
-//                });
-//            }
-//
-//            if (source == buttonSortColour) {
-//                currentGroupOfPlanets.sort(new Comparator<Character>() {
-//
-//                    @Override
-//                    public int compare(Character o1, Character o2) {
-//                        return o1.getColour().toString().compareTo(o2.getColour().toString());
-//                    }
-//                });
-//            }
-//
-//            if (source == infoButton) {
-//                JOptionPane.showMessageDialog(this, AUTHOR);
-//            }
+            if (source == saveToDocumentButton) {
+                Iterator<Character> iterator = getIterator();
+                if (iterator != null) {
+                    Character character = iterator.next();
+                    String fileName = JOptionPane.showInputDialog("Write the name of document");
+                    if (fileName == null || fileName.equals("")) return;  // Cancel lub pusta nazwa pliku.
+//                    Character.writeToTheDocument(fileName, character); todo
+                }
+            }
+
+            if (source == buttonSortMass) {
+                currentGroupOfCharacters.sort(new Comparator<Character>() {
+                    @Override
+                    public int compare(Character o1, Character o2) {
+                        return (o1.getName().compareTo(o2.getName()));
+                    }
+                });
+            }
+
+            if (source == buttonSortColour) {
+                currentGroupOfCharacters.sort(new Comparator<Character>() {
+
+                    @Override
+                    public int compare(Character o1, Character o2) {
+                        return o1.getEyesColor().compareTo(o2.getEyesColor());
+                    }
+                });
+            }
+
+            if (source == infoButton) {
+                JOptionPane.showMessageDialog(this, AUTHOR);
+            }
 
 //        } catch (CharacterException ex) {
 //            JOptionPane.showMessageDialog(this, ex.getMessage(), "Unexpected error", JOptionPane.ERROR_MESSAGE);
@@ -191,7 +188,7 @@ public class GroupWindowApp extends JDialog implements ActionListener {
     private Iterator<Character> getIterator() {
         int index = viewList.getSelectedIndex();
         if (index >= 0) {
-            Iterator<Character> iterator = currentGroupOfPlanets.iterator();
+            Iterator<Character> iterator = currentGroupOfCharacters.iterator();
             while (index-- > 0)
                 iterator.next();
             return iterator;

@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serial;
 
-public class PlanetWindowDialog extends JDialog implements ActionListener {
+public class CharacterWindowDialog extends JDialog implements ActionListener {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public class PlanetWindowDialog extends JDialog implements ActionListener {
     JButton OKButton = new JButton("  OK  ");
     JButton CancelButton = new JButton("Cancel");
 
-    public PlanetWindowDialog(Window parent, Character character) {
+    public CharacterWindowDialog(Window parent, Character character) {
         super(parent, Dialog.ModalityType.DOCUMENT_MODAL);
 
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -42,7 +42,7 @@ public class PlanetWindowDialog extends JDialog implements ActionListener {
         this.character = character;
 
         if (character == null) {
-            setTitle("New planet");
+            setTitle("New character");
         } else {
             setTitle(character.toString());
             nameField.setText(character.getName());
@@ -104,7 +104,7 @@ public class PlanetWindowDialog extends JDialog implements ActionListener {
 
 
                 dispose();
-           // } catch (PlanetException exx) {
+           // } catch (CharacterException exx) {
             //    JOptionPane.showMessageDialog(this, exx.getMessage(), "Unexpected error", JOptionPane.ERROR_MESSAGE);
             } catch(NumberFormatException ex){
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Number format exception", JOptionPane.ERROR_MESSAGE);
@@ -116,12 +116,12 @@ public class PlanetWindowDialog extends JDialog implements ActionListener {
         }
     }
 
-    public static Character createPlanet(Window parent) {
-        PlanetWindowDialog dialog = new PlanetWindowDialog(parent, null);
+    public static Character createCharacter(Window parent) {
+        CharacterWindowDialog dialog = new CharacterWindowDialog(parent, null);
         return dialog.character;
     }
 
-    public static void changePlanet(Window parent, Character planet) {
-        new PlanetWindowDialog(parent, planet);
+    public static void changeCharacter(Window parent, Character character) {
+        new CharacterWindowDialog(parent, character);
     }
 }

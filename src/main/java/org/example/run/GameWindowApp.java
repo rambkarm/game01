@@ -1,16 +1,10 @@
-/**
- * Nazwa: Planety
- * Autor: Valeriia Tykhoniuk (266319)
- * Data utworzenia: 11.10.2022
- */
-
 package org.example.run;
 
 
 
 import org.example.model.CharacterException;
 import org.example.model.Character;
-import org.example.ui.PlanetWindowDialog;
+import org.example.ui.CharacterWindowDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,33 +17,33 @@ public class GameWindowApp extends JFrame implements ActionListener {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public static final String AUTHOR = "Nazwa: Planety. Autor: Valeriia Tykhoniuk (266319). Data utworzenia: 15.11.2022";
+    public static final String AUTHOR = "Raf";
 
     public static void main(String[] args) {
         new GameWindowApp();
     }
 
-    private Character currentPlanet;
+    private Character currentCharacter;
 
 
-    //etykiety
+    //etykietyf
     JLabel nameLabel = new JLabel("Name: ");
-    JLabel colourLabel = new JLabel("Color: ");
-    JLabel massLabel = new JLabel("Mass: ");
-    JLabel radiusLabel = new JLabel("Radius: ");
-    JLabel satellitesLabel = new JLabel("Number of satellites: ");
+    JLabel genderLabel = new JLabel("Gender: ");
+    JLabel eyesColorLabel = new JLabel("Eyes color: ");
+    JLabel hairColorLabel = new JLabel("Hair color: ");
+    JLabel hpLabel = new JLabel("HP: ");
 
     //pola
     JTextField nameField = new JTextField(10);
-    JTextField colourField = new JTextField(10);
-    JTextField massField = new JTextField(10);
-    JTextField radiusField = new JTextField(10);
-    JTextField satellitesField = new JTextField(10);
+    JTextField genderField = new JTextField(10);
+    JTextField eyesColorField = new JTextField(10);
+    JTextField hairColorField = new JTextField(10);
+    JTextField hpField = new JTextField(10);
 
     //przyciski
-    JButton newPlanetButton = new JButton("New planet");
-    JButton deletePlanetButton = new JButton("Delete planet");
-    JButton editPlanetButton = new JButton("Change planet");
+    JButton newCharacterButton = new JButton("New character");
+    JButton deleteCharacterButton = new JButton("Delete character");
+    JButton editCharacterButton = new JButton("Change character");
     JButton loadFromDocumentButton = new JButton("Read data from document");
     JButton saveToDocumentButton = new JButton("Write data to the document");
     JButton infoButton = new JButton("About author");
@@ -58,27 +52,27 @@ public class GameWindowApp extends JFrame implements ActionListener {
     JButton serializableReadButton = new JButton("Read serializable data from the document");
 
     public GameWindowApp() {
-        setTitle("PlanetWindowsApp");
+        setTitle("CharacterWindowsApp");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 500);
         setResizable(false);
         setLocationRelativeTo(null);
 
         nameLabel.setForeground(Color.white);
-        colourLabel.setForeground(Color.white);
-        massLabel.setForeground(Color.white);
-        radiusLabel.setForeground(Color.white);
-        satellitesLabel.setForeground(Color.white);
+        genderLabel.setForeground(Color.white);
+        eyesColorLabel.setForeground(Color.white);
+        hairColorLabel.setForeground(Color.white);
+        hpLabel.setForeground(Color.white);
 
         nameField.setEditable(false);
-        colourField.setEditable(false);
-        massField.setEditable(false);
-        radiusField.setEditable(false);
-        satellitesField.setEditable(false);
+        genderField.setEditable(false);
+        eyesColorField.setEditable(false);
+        hairColorField.setEditable(false);
+        hpField.setEditable(false);
 
-        newPlanetButton.addActionListener(this);
-        deletePlanetButton.addActionListener(this);
-        editPlanetButton.addActionListener(this);
+        newCharacterButton.addActionListener(this);
+        deleteCharacterButton.addActionListener(this);
+        editCharacterButton.addActionListener(this);
         loadFromDocumentButton.addActionListener(this);
         saveToDocumentButton.addActionListener(this);
         infoButton.addActionListener(this);
@@ -91,21 +85,21 @@ public class GameWindowApp extends JFrame implements ActionListener {
         panel.add(nameLabel);
         panel.add(nameField);
 
-        panel.add(colourLabel);
-        panel.add(colourField);
+        panel.add(genderLabel);
+        panel.add(genderField);
 
-        panel.add(massLabel);
-        panel.add(massField);
+        panel.add(eyesColorLabel);
+        panel.add(eyesColorField);
 
-        panel.add(radiusLabel);
-        panel.add(radiusField);
+        panel.add(hairColorLabel);
+        panel.add(hairColorField);
 
-        panel.add(satellitesLabel);
-        panel.add(satellitesField);
+        panel.add(hpLabel);
+        panel.add(hpField);
 
-        panel.add(newPlanetButton);
-        panel.add(deletePlanetButton);
-        panel.add(editPlanetButton);
+        panel.add(newCharacterButton);
+        panel.add(deleteCharacterButton);
+        panel.add(editCharacterButton);
         panel.add(loadFromDocumentButton);
         panel.add(saveToDocumentButton);
         panel.add(infoButton);
@@ -119,70 +113,70 @@ public class GameWindowApp extends JFrame implements ActionListener {
 
         setContentPane(panel);
 
-        showCurrentPlanet();
+        showCurrentCharacter();
 
         setVisible(true);
     }
 
-    void showCurrentPlanet() {
-//        if (currentPlanet == null) {
-//            nameField.setText("");
-//            colourField.setText("");
-//            massField.setText("");
-//            radiusField.setText("");
-//            satellitesField.setText("");
-//        } else {
-//            nameField.setText(currentPlanet.getName());
-//            colourField.setText("" + currentPlanet.getColour());
-//            massField.setText("" + currentPlanet.getMass());
-//            radiusField.setText("" + currentPlanet.getRadius());
-//            satellitesField.setText("" + currentPlanet.getSatellitesCount());
-//        }
+    void showCurrentCharacter() {
+        if (currentCharacter == null) {
+            nameField.setText("");
+            genderField.setText("");
+            eyesColorField.setText("");
+            hairColorField.setText("");
+            hpField.setText("");
+        } else {
+            nameField.setText(currentCharacter.getName());
+            genderField.setText("" + currentCharacter.getGender());
+            eyesColorField.setText("" + currentCharacter.getEyesColor());
+            hairColorField.setText("" + currentCharacter.getHairColor());
+            hpField.setText("" + currentCharacter.getHp());
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object eventSource = e.getSource();
         try {
-            if (eventSource == newPlanetButton) {
-                currentPlanet = PlanetWindowDialog.createPlanet(this);
+            if (eventSource == newCharacterButton) {
+                currentCharacter = CharacterWindowDialog.createCharacter(this);
             }
-            if (eventSource == deletePlanetButton) {
-                currentPlanet = null;
+            if (eventSource == deleteCharacterButton) {
+                currentCharacter = null;
             }
-//            if (eventSource == saveToDocumentButton) {
-//                String fileName = JOptionPane.showInputDialog("Write the name of document");
-//                if (fileName == null || fileName.equals("")) return;
-//                Planet.writeToTheDocument(fileName, currentPlanet);
-//            }
-//
-//            if (eventSource == serializableWriteButton) {
-//                String fileName = JOptionPane.showInputDialog("Write the name of document");
-//                if (fileName == null || fileName.equals("")) return;
-//                Planet.writeObjectToTheDocument(fileName, currentPlanet);
-//            }
-//
-//            if (eventSource == loadFromDocumentButton) {
-//                JFileChooser fc = new JFileChooser();
-//                int i = fc.showOpenDialog(this);
-//                if (i == JFileChooser.APPROVE_OPTION) {
-//                    File f = fc.getSelectedFile();
-//                    currentPlanet = Planet.readFromFile(f);
-//                }
-//            }
-//
-//            if (eventSource == serializableReadButton) {
-//                JFileChooser fc = new JFileChooser();
-//                int i = fc.showOpenDialog(this);
-//                if (i == JFileChooser.APPROVE_OPTION) {
-//                    File f = fc.getSelectedFile();
-//                    currentPlanet = Planet.readObjectToTheDocument(f);
-//                }
-//            }
+            if (eventSource == saveToDocumentButton) {
+                String fileName = JOptionPane.showInputDialog("Write the name of document");
+                if (fileName == null || fileName.equals("")) return;
+//                Character.writeToTheDocument(fileName, currentCharacter); todo
+            }
 
-            if (eventSource == editPlanetButton) {
-                if (currentPlanet == null) throw new CharacterException("Any planet wasn't changed");
-                PlanetWindowDialog.changePlanet(this, currentPlanet);
+            if (eventSource == serializableWriteButton) {
+                String fileName = JOptionPane.showInputDialog("Write the name of document");
+                if (fileName == null || fileName.equals("")) return;
+//                Character.writeObjectToTheDocument(fileName, currentCharacter); todo
+            }
+
+            if (eventSource == loadFromDocumentButton) {
+                JFileChooser fc = new JFileChooser();
+                int i = fc.showOpenDialog(this);
+                if (i == JFileChooser.APPROVE_OPTION) {
+                    File f = fc.getSelectedFile();
+                    currentCharacter = null; //Character.readFromFile(f); todo
+                }
+            }
+
+            if (eventSource == serializableReadButton) {
+                JFileChooser fc = new JFileChooser();
+                int i = fc.showOpenDialog(this);
+                if (i == JFileChooser.APPROVE_OPTION) {
+                    File f = fc.getSelectedFile();
+                    currentCharacter = null; //Character.readObjectToTheDocument(f); todo
+                }
+            }
+
+            if (eventSource == editCharacterButton) {
+                if (currentCharacter == null) throw new CharacterException("No characters were changed.");
+                CharacterWindowDialog.changeCharacter(this, currentCharacter);
             }
 
             if (eventSource == infoButton) {
@@ -197,7 +191,7 @@ public class GameWindowApp extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, exception.getMessage(), "Unexpected error", JOptionPane.ERROR_MESSAGE);
         }
 
-        showCurrentPlanet();
+        showCurrentCharacter();
     }
 }
 
