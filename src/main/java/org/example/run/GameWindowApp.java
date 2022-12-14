@@ -29,14 +29,14 @@ public class GameWindowApp extends JFrame implements ActionListener {
     //etykietyf
     JLabel nameLabel = new JLabel("Name: ");
     JLabel genderLabel = new JLabel("Gender: ");
-    JLabel eyesColorLabel = new JLabel("Eyes color: ");
+    JLabel eyeColorLabel = new JLabel("Eye color: ");
     JLabel hairColorLabel = new JLabel("Hair color: ");
     JLabel hpLabel = new JLabel("HP: ");
 
     //pola
     JTextField nameField = new JTextField(10);
     JTextField genderField = new JTextField(10);
-    JTextField eyesColorField = new JTextField(10);
+    JTextField eyeColorField = new JTextField(10);
     JTextField hairColorField = new JTextField(10);
     JTextField hpField = new JTextField(10);
 
@@ -60,13 +60,13 @@ public class GameWindowApp extends JFrame implements ActionListener {
 
         nameLabel.setForeground(Color.white);
         genderLabel.setForeground(Color.white);
-        eyesColorLabel.setForeground(Color.white);
+        eyeColorLabel.setForeground(Color.white);
         hairColorLabel.setForeground(Color.white);
         hpLabel.setForeground(Color.white);
 
         nameField.setEditable(false);
         genderField.setEditable(false);
-        eyesColorField.setEditable(false);
+        eyeColorField.setEditable(false);
         hairColorField.setEditable(false);
         hpField.setEditable(false);
 
@@ -88,8 +88,8 @@ public class GameWindowApp extends JFrame implements ActionListener {
         panel.add(genderLabel);
         panel.add(genderField);
 
-        panel.add(eyesColorLabel);
-        panel.add(eyesColorField);
+        panel.add(eyeColorLabel);
+        panel.add(eyeColorField);
 
         panel.add(hairColorLabel);
         panel.add(hairColorField);
@@ -122,13 +122,13 @@ public class GameWindowApp extends JFrame implements ActionListener {
         if (currentCharacter == null) {
             nameField.setText("");
             genderField.setText("");
-            eyesColorField.setText("");
+            eyeColorField.setText("");
             hairColorField.setText("");
             hpField.setText("");
         } else {
             nameField.setText(currentCharacter.getName());
             genderField.setText("" + currentCharacter.getGender());
-            eyesColorField.setText("" + currentCharacter.getEyesColor());
+            eyeColorField.setText("" + currentCharacter.getEyeColor());
             hairColorField.setText("" + currentCharacter.getHairColor());
             hpField.setText("" + currentCharacter.getHp());
         }

@@ -54,7 +54,7 @@ public class GroupWindowApp extends JDialog implements ActionListener {
     JButton saveToDocumentButton = new JButton("Write data to the document");
     JButton infoButton = new JButton("About author");
     JButton buttonSortHP = new JButton("Sort by the HP");
-    JButton buttonSortEyesColor = new JButton("Sort by the eyes color");
+    JButton buttonSortEyeColor = new JButton("Sort by the eye color");
 
     ViewGroupOfCharacters viewList;
 
@@ -86,7 +86,7 @@ public class GroupWindowApp extends JDialog implements ActionListener {
         infoButton.addActionListener(this);
 
         buttonSortHP.addActionListener(this);
-        buttonSortEyesColor.addActionListener(this);
+        buttonSortEyeColor.addActionListener(this);
 
         JPanel panel = new JPanel();
 
@@ -100,7 +100,7 @@ public class GroupWindowApp extends JDialog implements ActionListener {
         panel.add(infoButton);
 
         panel.add(buttonSortHP);
-        panel.add(buttonSortEyesColor);
+        panel.add(buttonSortEyeColor);
 
         setContentPane(panel);
 
@@ -164,12 +164,12 @@ public class GroupWindowApp extends JDialog implements ActionListener {
                 });
             }
 
-            if (source == buttonSortEyesColor) {
+            if (source == buttonSortEyeColor) {
                 currentGroupOfCharacters.sort(new Comparator<Character>() {
 
                     @Override
                     public int compare(Character o1, Character o2) {
-                        return o1.getEyesColor().compareTo(o2.getEyesColor());
+                        return o1.getEyeColor().compareTo(o2.getEyeColor());
                     }
                 });
             }

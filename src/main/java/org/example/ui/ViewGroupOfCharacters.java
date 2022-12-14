@@ -22,7 +22,7 @@ public class ViewGroupOfCharacters extends JScrollPane {
         setPreferredSize(new Dimension(width, height));
         setBorder(BorderFactory.createTitledBorder("All characters:"));
 
-        String[] tableHeader = {"Name", "Gender", "Eyes color", "Hair color", "HP"};
+        String[] tableHeader = {"Name", "Gender", "Eye color", "Hair color", "HP"};
         tableModel = new DefaultTableModel(tableHeader, 0);
         table = new JTable(tableModel) {
 
@@ -42,8 +42,8 @@ public class ViewGroupOfCharacters extends JScrollPane {
     public void refreshView() {
         tableModel.setRowCount(0);
         for (Character c : group) {
-            String[] row = {c.getName(), c.getName(), c.getGender(),
-                    c.getEyesColor(), c.getHairColor(), c.getHp().toString()};
+            String[] row = {c.getName(), c.getGender(),
+                    c.getEyeColor(), c.getHairColor(), c.getHp().toString()};
             tableModel.addRow(row);
         }
     }

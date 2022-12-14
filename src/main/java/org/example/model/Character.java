@@ -34,7 +34,7 @@ public class Character {
         this.gender = gender;
     }
 
-    public String getEyesColor() {
+    public String getEyeColor() {
         return eyesColor;
     }
 

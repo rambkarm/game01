@@ -1,7 +1,8 @@
 package org.example.ui;
 ;
 import org.example.model.Character;
-import org.example.model.EyeColor;
+import org.example.model.CharacterColor;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,15 +19,15 @@ public class CharacterWindowDialog extends JDialog implements ActionListener {
 
     JLabel nameLabel = new JLabel("Name: ");
     JLabel genderLabel = new JLabel("Gender: ");
-    JLabel eyesColorLabel = new JLabel("Eyes color: ");
+    JLabel eyeColorLabel = new JLabel("Eye color: ");
     JLabel hairColorLabel = new JLabel("Hair color: ");
     JLabel hpLabel = new JLabel("HP: ");
 
     JTextField nameField = new JTextField(10);
-    JComboBox<EyeColor> eyeColorField = new JComboBox<EyeColor>(EyeColor.values());
-    JTextField hairColorField = new JTextField(10);
-    JTextField hpField = new JTextField(10);
     JTextField genderField = new JTextField(10);
+    JComboBox<CharacterColor> eyeColorField = new JComboBox<CharacterColor>(CharacterColor.values());
+    JComboBox<CharacterColor> hairColorField = new JComboBox<CharacterColor>(CharacterColor.values());
+    JTextField hpField = new JTextField(10);
 
     JButton OKButton = new JButton("  OK  ");
     JButton CancelButton = new JButton("Cancel");
@@ -46,9 +47,9 @@ public class CharacterWindowDialog extends JDialog implements ActionListener {
         } else {
             setTitle(character.toString());
             nameField.setText(character.getName());
-            genderField.setText("" + character.getGender());
-            eyeColorField.setSelectedItem(character.getEyesColor());
-            hairColorField.setText("" + character.getHairColor());
+            genderField.setText(character.getGender());
+            eyeColorField.setSelectedItem(character.getEyeColor());
+            hairColorField.setSelectedItem(character.getHairColor());
             hpField.setText("" + character.getHp());
 
         }
@@ -59,7 +60,7 @@ public class CharacterWindowDialog extends JDialog implements ActionListener {
 
         nameLabel.setForeground(Color.white);
         genderLabel.setForeground(Color.white);
-        eyesColorLabel.setForeground(Color.white);
+        eyeColorLabel.setForeground(Color.white);
         hairColorLabel.setForeground(Color.white);
         hpLabel.setForeground(Color.white);
 
@@ -67,16 +68,16 @@ public class CharacterWindowDialog extends JDialog implements ActionListener {
         panel.add(nameField);
 
         panel.add(genderLabel);
+        panel.add(genderField);
+
+        panel.add(eyeColorLabel);
         panel.add(eyeColorField);
 
-        panel.add(eyesColorLabel);
+        panel.add(hairColorLabel);
         panel.add(hairColorField);
 
-        panel.add(hairColorLabel);
-        panel.add(hpField);
-
         panel.add(hpLabel);
-        panel.add(genderField);
+        panel.add(hpField);
 
         panel.add(OKButton);
         panel.add(CancelButton);
@@ -97,7 +98,7 @@ public class CharacterWindowDialog extends JDialog implements ActionListener {
             try {
                 if (character == null) {
                     character = new Character(nameField.getText(), genderField.getText(), eyeColorField.getToolTipText(),
-                            hairColorField.getText(), Double.parseDouble(hpField.getText()));
+                            hairColorField.getToolTipText(), Double.parseDouble(hpField.getText()));
                 } else {
                     character.setName(nameField.getText());
                 }
