@@ -97,12 +97,15 @@ public class CharacterWindowDialog extends JDialog implements ActionListener {
         if (eventsource == OKButton) {
             try {
                 if (character == null) {
-                    character = new Character(nameField.getText(), genderField.getText(), eyeColorField.getToolTipText(),
-                            hairColorField.getToolTipText(), Double.parseDouble(hpField.getText()));
+                    character = new Character(nameField.getText(), genderField.getText(), eyeColorField.getSelectedItem().toString(),
+                            hairColorField.getSelectedItem().toString(), Double.parseDouble(hpField.getText()));
                 } else {
                     character.setName(nameField.getText());
+                    character.setGender(genderField.getText());
+                    character.setEyeColor(eyeColorField.getSelectedItem().toString());
+                    character.setHairColor(hairColorField.getSelectedItem().toString());
+                    character.setHp(Double.parseDouble(hpField.getText()));
                 }
-
 
                 dispose();
            // } catch (CharacterException exx) {

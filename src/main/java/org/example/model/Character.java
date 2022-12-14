@@ -38,9 +38,10 @@ public class Character {
         return eyesColor;
     }
 
-    public void setEyesColor(String eyesColor) {
+    public void setEyeColor(String eyesColor) {
         this.eyesColor = eyesColor;
     }
+
 
     public String getHairColor() {
         return hairColor;
@@ -63,7 +64,7 @@ public class Character {
         return "Character{" +
                 "name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
-                ", eyesColor='" + eyesColor + '\'' +
+                ", eyeColor='" + eyesColor + '\'' +
                 ", hairColor='" + hairColor + '\'' +
                 ", hp=" + hp +
                 '}';
